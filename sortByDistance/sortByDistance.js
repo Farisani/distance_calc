@@ -29,7 +29,26 @@ module.exports = function sortJsonDataByDistance(latitude , longitude) {
   for (var i = 0; i < results.length; i++) {
     geoResults.push(results[i].geoData);
   }
+
+  const data = require('./../domain/data.json');
+  dataResults = [];
+
+  for (var j = 0; j < geoResults.length; j++) {
+    const ipAddress = geoResults[j].ipv4;
+
+    for (var k = 0; k < data.length; k++) {
+      if (ipAddress === getIpAddress(data[k].meta)) {
+        dataResults.push(data[k]);
+      }
+    }
+    
+  }
+
   return geoResults;
+}
+
+function getIpAddress(metaData) {
+  return metaData.match("\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b");
 }
 
 function getDistanceFromLatLon(latitude1, longitude1, latitude2, longitude2) {
@@ -49,4 +68,4 @@ function getDistanceFromLatLon(latitude1, longitude1, latitude2, longitude2) {
   
   function toRadius(value) {
     return value * (Math.PI/180)
-  } 
+  }
