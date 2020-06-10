@@ -7,8 +7,9 @@ module.exports = function checkShortestJsonData (latitude , longitude) {
 
     const data = require('./../domain/data.json');
 
-    for (var i = 0; i < data[0].length; i++) {
+    for (const i = 0; i < data[0].length; i++) {
         if (checkIpAddress === getIpAddress(data[i].meta)) {
+            console.log("The shortest distance is : ")
             return data[1];
         }
     }
