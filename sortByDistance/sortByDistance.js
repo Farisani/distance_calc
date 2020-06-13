@@ -38,6 +38,8 @@ module.exports = function sortJsonDataByDistance(latitude , longitude) {
     for (var k = 0; k < data.length; k++) {
       if (ipAddress === getIpAddress(data[k].meta)) {
         dataResults.push(data[k]);
+        console.log("Sorted results : ",  data[k]);
+        console.log(data);
       }
     }
     
@@ -46,7 +48,9 @@ module.exports = function sortJsonDataByDistance(latitude , longitude) {
 }
 
 function getIpAddress(metaData) {
-  return metaData.match("\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b");
+  let regex = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/;
+  let ipAddress = metaData.match(regex);
+  return ipAddress;
 }
 
 
