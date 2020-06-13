@@ -23,7 +23,7 @@ module.exports = function checkShortestJsonData(latitude, longitude) {
 };
 
 function getIpAddress(metaData) {
-  let myRegex = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/;
-  let ip = metaData.match(myRegex);
+  let regex = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/;
+  let ip = metaData.match(regex);
   return ip;
 }
