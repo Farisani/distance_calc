@@ -10,9 +10,9 @@ module.exports = function checkShortestJsonData(latitude, longitude) {
   for (let i = 0; i < data.length; i++) {
     //console.log('My Ip adress for comparison',getIpAddress(data[i].meta));
 
-    let ip = getIpAddress(data[i].meta)
-    if (checkIpAddress === ip[0]) {
-      console.log("The shortest distance is : ", ip.input)
+    let ipAddress = getIpAddress(data[i].meta)
+    if (checkIpAddress === ipAddress[0]) {
+      console.log("The shortest distance is : ", ipAddress.input)
       console.log("The shortest distance is : ",data[i])
       
       return data[i];
@@ -24,6 +24,6 @@ module.exports = function checkShortestJsonData(latitude, longitude) {
 
 function getIpAddress(metaData) {
   let regex = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/;
-  let ip = metaData.match(regex);
-  return ip;
+  let ipAddress = metaData.match(regex);
+  return ipAddress;
 }
