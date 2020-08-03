@@ -1,4 +1,4 @@
-# Ambrite-Programming-Assessment
+Programming-Assessment
 
 Execution Instructions :
 
